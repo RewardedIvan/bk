@@ -168,17 +168,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\events\event.cpp" />
-    <ClCompile Include="src\gpu\gpu.cpp" />
-    <ClCompile Include="src\gpu\GWindow.cpp" />
+    <ClCompile Include="src\gpu\Context.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\buf\IBO.cpp" />
     <ClCompile Include="src\gpu\PixelFormat.cpp" />
+    <ClCompile Include="src\gpu\platform\OpenGL\GLFWOpenGLContext.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\Renderer.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\Shader.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\buf\VAO.cpp" />
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\buf\VBO.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\Texture.cpp" />
-    <ClCompile Include="src\input\Input.cpp" />
+    <ClCompile Include="src\input\GLFWInput.cpp" />
     <ClCompile Include="src\input\Keys.cpp" />
     <ClCompile Include="src\pch\pch.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
@@ -198,8 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\events\event.h" />
-    <ClInclude Include="src\events\GLFWInput.h" />
+    <ClInclude Include="src\events\GLFWInputEvent.h" />
     <ClInclude Include="src\gpu\platform\OpenGL\bindable.h" />
+    <ClInclude Include="src\gpu\platform\OpenGL\GLFWOpenGLContext.h" />
     <ClInclude Include="src\gpu\platform\OpenGL\buf\IBO.h" />
     <ClInclude Include="src\gpu\PixelFormat.h" />
     <ClInclude Include="src\gpu\platform\OpenGL\Renderer.h" />
@@ -208,11 +209,11 @@
     <ClInclude Include="src\gpu\Overlay.h" />
     <ClInclude Include="src\gpu\platform\OpenGL\Shader.h" />
     <ClInclude Include="src\gpu\platform\OpenGL\Texture.h" />
+    <ClInclude Include="src\gpu\WindowMode.h" />
     <ClInclude Include="src\input\Input.h" />
     <ClInclude Include="src\input\Keys.h" />
     <ClInclude Include="src\pch\pch.h" />
-    <ClInclude Include="src\gpu\gpu.h" />
-    <ClInclude Include="src\gpu\GWindow.h" />
+    <ClInclude Include="src\gpu\Context.h" />
     <ClInclude Include="src\archive\archive.h" />
     <ClInclude Include="src\utils\colutils.h" />
     <ClInclude Include="src\utils\hash.h" />

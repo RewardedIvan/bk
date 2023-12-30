@@ -7,8 +7,8 @@
 #endif
 
 namespace bk::input {
-	// DOWN : RELEASED -> PRESS -> DOWN
-	// RELEASE : DOWN -> RELEASE -> RELEASED
+	// DOWN		: RELEASED	-> PRESS	-> DOWN
+	// RELEASE	: DOWN		-> RELEASE	-> RELEASED
 	KeyState transitionKeyState(KeyState current, KeyState newS) {
 		switch (current) {
         case RELEASED:

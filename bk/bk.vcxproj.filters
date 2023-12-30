@@ -18,10 +18,7 @@
     <ClCompile Include="src\app.cpp">
       <Filter>if you are reading this click show all files</Filter>
     </ClCompile>
-    <ClCompile Include="src\gpu\GWindow.cpp">
-      <Filter>if you are reading this click show all files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gpu\gpu.cpp">
+    <ClCompile Include="src\gpu\Context.cpp">
       <Filter>if you are reading this click show all files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\log.cpp">
@@ -57,7 +54,7 @@
     <ClCompile Include="src\events\event.cpp">
       <Filter>if you are reading this click show all files</Filter>
     </ClCompile>
-    <ClCompile Include="src\input\Input.cpp">
+    <ClCompile Include="src\input\GLFWInput.cpp">
       <Filter>if you are reading this click show all files</Filter>
     </ClCompile>
     <ClCompile Include="src\gpu\platform\OpenGL\buf\VBO.cpp">
@@ -72,12 +69,12 @@
     <ClCompile Include="src\input\Keys.cpp">
       <Filter>if you are reading this click show all files</Filter>
     </ClCompile>
+    <ClCompile Include="src\gpu\platform\OpenGL\GLFWOpenGLContext.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\gpu\GWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gpu\gpu.h">
+    <ClInclude Include="src\gpu\Context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\log.h">
@@ -122,7 +119,7 @@
     <ClInclude Include="src\input\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\events\GLFWInput.h">
+    <ClInclude Include="src\events\GLFWInputEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gpu\platform\OpenGL\buf\VBO.h">
@@ -135,6 +132,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\input\Keys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\GLFWOpenGLContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\WindowMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

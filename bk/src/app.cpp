@@ -1,6 +1,6 @@
 #include "pch/pch.h"
 
-#include "gpu/GWindow.h"
+#include "gpu/platform/OpenGL/GLFWOpenGLContext.h"
 #include "gpu/Overlay.h"
 
 #include "gpu/platform/OpenGL/buf/VAO.h"
@@ -21,9 +21,9 @@ namespace gl = bk::gpu::opengl;
 struct OpenGLTest : bk::Overlay {
 	gl::Renderer r;
 	//bk::archive::Archive* shaders;
-	bk::GWindow& win;
+	bk::gpu::opengl::GLFWOpenGLContext& win;
 
-	OpenGLTest(bk::GWindow& win) : win(win) {
+	OpenGLTest(bk::gpu::opengl::GLFWOpenGLContext& win) : win(win) {
 		r = gl::Renderer();
 		//shaders = new bk::archive::Archive("shaders.ar");
 	}
@@ -58,10 +58,8 @@ struct OpenGLTest : bk::Overlay {
 			vb->add<float>(2);
 			va->addVBO(*vb);
 
-			//bk::Log::debug("%s", shaders->findFile("base.vert")->getData().c_str());
 			//sh = new gl::Shader(shaders->findFile("base.vert")->getData().c_str(), shaders->findFile("base.frag")->getData().c_str());
 			sh = new gl::Shader(bk::strutils::readFile("sh/base.vert").c_str(), bk::strutils::readFile("sh/base.frag").c_str());
-			//bk::Log::debug("%s", bk::strutils::readFile("sh\\base.vert").c_str());
 			sh->finish();
 
 			init = true;
@@ -254,21 +252,21 @@ struct ArchiveEditor : bk::Overlay {
 };
 
 struct InputTest : bk::Overlay {
-	bk::GWindow& win;
+	bk::gpu::Context& win;
 
-	InputTest(bk::GWindow& w) : win(w) {
+	InputTest(bk::gpu::Context& w) : win(w) {
 	}
 	
 	void render() override {
 		ImGui::Begin("input"); {
 			using k = bk::input::Keys;
-			ImGui::Text("key A state: %d", bk::input::getKey(win, k::K_A));
-			ImGui::Text("key '%s' press: %d", bk::input::keyName(k::K_B).c_str(), bk::input::isKeyPressed(win, k::K_B));
-			ImGui::Text("key C down: %d", bk::input::isKeyDown(win, k::K_C));
-			ImGui::Text("alt+C down: %d", bk::input::isKeyDown(win, k::K_C) && bk::input::isKeyDown(win, k::K_LEFT_ALT));
-			ImGui::Text("mb1 state: %d", bk::input::getMouseBtn(win, k::K_MB1));
-			ImGui::Text("mb2 state: %d", bk::input::getMouseBtn(win, k::K_MB2));
-			ImGui::Text("mb3 state: %d", bk::input::getMouseBtn(win, k::K_MB3));
+			ImGui::Text("key A state: %d", bk::input::getKey(&win, k::K_A));
+			ImGui::Text("key '%s' press: %d", bk::input::keyName(k::K_B).c_str(), bk::input::isKeyPressed(&win, k::K_B));
+			ImGui::Text("key C down: %d", bk::input::isKeyDown(&win, k::K_C));
+			ImGui::Text("alt+C down: %d", bk::input::isKeyDown(&win, k::K_C) && bk::input::isKeyDown(&win, k::K_LEFT_ALT));
+			ImGui::Text("mb1 state: %d", bk::input::getMouseBtn(&win, k::K_MB1));
+			ImGui::Text("mb2 state: %d", bk::input::getMouseBtn(&win, k::K_MB2));
+			ImGui::Text("mb3 state: %d", bk::input::getMouseBtn(&win, k::K_MB3));
 		} ImGui::End();
 	}
 };
@@ -276,15 +274,16 @@ struct InputTest : bk::Overlay {
 // bk app
 int main() {
 	bk::Log::setFile("latest.log");
-	bk::gpu::GPUAPI api = bk::gpu::GPUAPI::GLFWOpenGL;
+	bk::input::Keys::SetupGLFW();
 
-	bk::gpu::InitializeAPI(api);
-	bk::GWindow window(api, "bk tests");
+	bk::gpu::opengl::GLFWOpenGLContext window;
+	window.InitializeAPI();
+	window.CreateWindow("bk tests");
 
 	// i dont care if this fails
 	ImGui::GetIO().Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\JetBrainsMono-Regular.ttf", 20);
 
-	std::vector<bk::Overlay*> overlays { new OpenGLTest(window), new ArchiveEditor(), new InputTest(window)};
+	std::vector<bk::Overlay*> overlays { new OpenGLTest(window), new ArchiveEditor(), new InputTest(window) };
 
 	// imgui style
 	{
@@ -363,15 +362,15 @@ int main() {
 		s.ScrollbarSize = 10;
 	}
 
-	while (window.getOpen()) {
-		window.RenderStart();
+	while (window.getWindowOpen()) {
+		window.FrameStart();
 
 		for (bk::Overlay* o : overlays)
 			o->render();
 		ImGui::ShowDemoWindow();
 
-		window.RenderEnd();
+		window.FrameEnd();
 	}
 
-	bk::gpu::UninitializeAPI(api);
+	window.UninitializeAPI();
 }

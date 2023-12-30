@@ -26,8 +26,6 @@ namespace bk::gpu::opengl {
 		uint32_t i = 0, offset = 0;
 		for (const LayoutVariable& var : vb.getLayout()) {
 			GLCheckErr(glEnableVertexAttribArray(i));
-			Log::debug("%d striffd", vb.getStride());
-			Log::debug("%d off", offset);
 			GLCheckErr(glVertexAttribPointer(i, var.count, var.type, var.normalized, vb.getStride(), (const void*)(intptr_t)offset));
 			i++; offset += var.count * var.typeSize;
 		}

@@ -22,3 +22,9 @@ bk is a low level game engine written in c++
 ### unix
 
 todo
+
+## todo
+- support unix
+- add vulkan
+- build system?
+- move libs to submodules

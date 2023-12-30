@@ -25,9 +25,11 @@ namespace bk {
 	}
 
 	void Log::debug(const char* format, ...) {
+#ifdef BK_LOG_DEBUG
 		va_list va; va_start(va, format);
 		log(format, colutils::color("[#] ", ANSIColors::FgGray).c_str(), va);
 		va_end(va);
+#endif
 	}
 
 	void Log::info(const char* format, ...) {

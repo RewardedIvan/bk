@@ -1,15 +1,17 @@
 #pragma once
-#include "gpu/GWindow.h"
+#include "gpu/Context.h"
 #include "Keys.h"
 
 namespace bk::input {
-	glm::vec2 getMousePos(const GWindow& w);
-	KeyState getMouseBtn(const GWindow& w, Key btn);
+	// mouse
+	glm::vec2 getMousePos(gpu::Context* w);
+	KeyState getMouseBtn(gpu::Context* w, Key k);
 
-	KeyState getKey(const GWindow& w, Key k);
+	// keys
+	KeyState getKey(gpu::Context* w, Key k);
 	std::string keyName(Key k);
 
-	bool isKeyPressed(const GWindow& w, Key k);
-	bool isKeyDown(const GWindow& w, Key k);
-	bool isKeyReleased(const GWindow& w, Key k);
+	bool isKeyPressed(gpu::Context* w, Key k);
+	bool isKeyDown(gpu::Context* w, Key k);
+	bool isKeyReleased(gpu::Context* w, Key k);
 }

@@ -1,8 +1,11 @@
 #pragma once
 
+// OPTIONS
 #define BK_INCLUDE_OPENGL
 #define BK_INCLUDE_GLFW
-#define BK_LOG_TRACE
+#define BK_INCLUDE_IMGUI
+//#define BK_LOG_TRACE
+#define BK_LOG_DEBUG
 #define BK_LOG_STDOUT
 
 // Decide GL+GLSL versions
@@ -19,11 +22,14 @@
 
 #include <glm/glm.hpp>
 #include <stb_image.h>
+
+#ifdef BK_INCLUDE_IMGUI
 #include <imgui.h>
 #include <imgui_stdlib.h>
 #include <imgui_freetype.h>
 #include <imgui_memory_editor.h>
 #include <imfilebrowser.h>
+#endif
 
 #ifdef BK_INCLUDE_GLFW
 //#include <GLFW/glfw3.h>

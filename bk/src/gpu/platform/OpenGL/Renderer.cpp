@@ -34,11 +34,10 @@ namespace bk::gpu::opengl {
 		i.bind();
 
 		GLCheckErr(glDrawElements(GL_TRIANGLES, i.getElementCount(), GL_UNSIGNED_INT, nullptr));
-		//GLCheckErr(glDrawArrays(GL_TRIANGLES, 0, i.getElementCount()));
 
 		//sh.unbind();
-		va.unbind();
-		i.unbind();
+		//va.unbind();
+		//i.unbind();
 	}
 
 	void Renderer::Flush() {
