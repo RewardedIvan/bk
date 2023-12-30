@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="if you are reading this click show all files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\app.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\GWindow.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\gpu.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\log.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\strutils.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\colutils.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch\pch.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\archive\archive.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\hash.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\platform\OpenGL\buf\VAO.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\platform\OpenGL\buf\IBO.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\platform\OpenGL\Renderer.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\platform\OpenGL\Shader.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\event.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\Input.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\platform\OpenGL\buf\VBO.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\platform\OpenGL\Texture.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gpu\PixelFormat.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\input\Keys.cpp">
+      <Filter>if you are reading this click show all files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\gpu\GWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\gpu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\strutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\colutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch\pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\archive\archive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\Overlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\buf\VAO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\bindable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\buf\IBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\events\event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\input\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\events\GLFWInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\buf\VBO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\platform\OpenGL\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gpu\PixelFormat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\input\Keys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+</Project>

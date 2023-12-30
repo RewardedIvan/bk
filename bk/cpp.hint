@@ -1,0 +1,4 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define defAdd(cpptype, gltype, normalized) template<> inline void VBO::add<cpptype>(uint32_t count) { layout.push_back(LayoutVariable(gltype, sizeof(cpptype), count, normalized)); stride += sizeof(cpptype); }
