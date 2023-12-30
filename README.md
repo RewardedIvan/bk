@@ -1,6 +1,6 @@
 # bk
 
-bk is a low level game engine written in c++
+bk is a low level game engine/framework written in c++
 
 ## dependencies
 
