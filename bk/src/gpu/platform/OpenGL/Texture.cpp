@@ -19,13 +19,18 @@ namespace bk::gpu::opengl {
 	}
 
 	Texture::Texture(fs::path path, PixelFormat pf) : pf(pf) {
+		if (!fs::exists(path)) {
+			Log::error("Texture file doesn't exist!");
+		}
+
 		int w = 0, h = 0;
 		int channels;
 
 		stbi_set_flip_vertically_on_load(1);
-		buf = stbi_load(path.relative_path().string().c_str(), &w, &h, &channels, queryPFData(pf).channels);
+		this->buf = stbi_load(path.string().c_str(), &w, &h, &channels, queryPFData(pf).channels);
 		stbi_set_flip_vertically_on_load(0);
-		size = glm::uvec2(w, h);
+		this->size = glm::uvec2(w, h);
+
 		OpenGL();
 	}
 
@@ -44,6 +49,7 @@ namespace bk::gpu::opengl {
 		this->buf = stbi_load_from_memory((const stbi_uc*)f->data, (int)f->dataSize, &w, &h, &channels, queryPFData(pf).channels);
 		stbi_set_flip_vertically_on_load(0);
 		this->size = glm::uvec2(w, h);
+
 		OpenGL();
 	}
 

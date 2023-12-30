@@ -1,0 +1,6 @@
+imgui.ini
+latest.log
+bin\
+
+# avoid uploading binary files to remote
+tex.jpg

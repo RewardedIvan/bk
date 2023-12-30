@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\app.cpp">
-      <Filter>if you are reading this click show all files</Filter>
-    </ClCompile>
     <ClCompile Include="src\gpu\Context.cpp">
       <Filter>if you are reading this click show all files</Filter>
     </ClCompile>
