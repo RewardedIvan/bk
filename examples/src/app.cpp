@@ -14,7 +14,8 @@ int main() {
 	window.CreateWindow("bk tests");
 
 	// i dont care if this fails
-	ImGui::GetIO().Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\JetBrainsMono-Regular.ttf", 20);
+	if (fs::exists("C:\\Windows\\Fonts\\JetBrainsMono-Regular.ttf"))
+		ImGui::GetIO().Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\JetBrainsMono-Regular.ttf", 20);
 
 	std::vector<bk::Overlay*> overlays {
 		new OpenGLTest(window),

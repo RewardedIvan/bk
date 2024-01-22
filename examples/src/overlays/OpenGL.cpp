@@ -28,7 +28,7 @@ void OpenGLTest::render() {
 
 	static gl::IBO* i = new gl::IBO(&indecies, sizeof(indecies), sizeof(uint32_t));
 	static gl::Shader* sh;
-	static gl::Texture* tex = new gl::Texture("tex.jpg", bk::gpu::PixelFormat::RGBA8);
+	static gl::Texture* tex = new gl::Texture("tex.jpg");
 	if (!init) {
 		r.enableBlending();
 
@@ -43,7 +43,7 @@ void OpenGLTest::render() {
 		init = true;
 	}
 
-	tex->bind(0);
+	tex->Activate(0);
 	ImGui::Begin("image debug");
 	ImGui::Image((void*)(intptr_t)tex->id, ImVec2((float)tex->getSize().x, (float)tex->getSize().y));
 	ImGui::End();

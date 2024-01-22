@@ -4,21 +4,23 @@
 #include "utils/log.h"
 
 namespace bk::gpu::opengl {
-	void Texture::OpenGL() {
-		GLCheckErr(glGenTextures(1, &id));
+	void Texture::Upload() {
+		if (id == 0)
+			GLCheckErr(glGenTextures(1, &id));
 		this->bind();
 
-		GLCheckErr(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
-		GLCheckErr(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
+		GLCheckErr(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, TextureFilteringAlgo2GL(af)));
+		GLCheckErr(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, TextureFilteringAlgo2GL(af)));
 		GLCheckErr(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE));
 		GLCheckErr(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE));
 
 		PixelFormat_t pfd = queryPFData(pf);
 		GLCheckErr(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, size.x, size.y, 0, GL_RGBA, (pfd.bpp == 8) ? GL_UNSIGNED_BYTE : (pfd.bpp == 16) ? GL_UNSIGNED_SHORT : 0, buf));
+		
 		this->unbind();
 	}
 
-	Texture::Texture(fs::path path, PixelFormat pf) : pf(pf) {
+	Texture::Texture(fs::path path, PixelFormat pf, TextureFilteringAlgo af) : pf(pf), af(af) {
 		if (!fs::exists(path)) {
 			Log::error("Texture file doesn't exist!");
 		}
@@ -31,11 +33,11 @@ namespace bk::gpu::opengl {
 		stbi_set_flip_vertically_on_load(0);
 		this->size = glm::uvec2(w, h);
 
-		OpenGL();
+		Upload();
 	}
 
 	// intelisense is shit
-	Texture::Texture(archive::Archive ar, const char* path, PixelFormat pf) : pf(pf) {
+	Texture::Texture(archive::Archive ar, const char* path, PixelFormat pf, TextureFilteringAlgo af) : pf(pf), af(af) {
 		archive::File* f = ar.findFile(path);
 		if (f == nullptr) {
 			Log::error("Couldn't find texture inside archive! '%s'", path);
@@ -50,7 +52,7 @@ namespace bk::gpu::opengl {
 		stbi_set_flip_vertically_on_load(0);
 		this->size = glm::uvec2(w, h);
 
-		OpenGL();
+		Upload();
 	}
 
 	Texture::~Texture() {
@@ -58,7 +60,7 @@ namespace bk::gpu::opengl {
 		stbi_image_free(buf);
 	}
 
-	void Texture::bind(uint8_t slot) {
+	void Texture::Activate(uint8_t slot) {
 		if (slot < 32) {
 			this->slotBoundTo = slot;
 			GLCheckErr(glActiveTexture(GL_TEXTURE0 + slot));

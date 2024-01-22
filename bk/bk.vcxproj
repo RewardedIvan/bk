@@ -177,6 +177,7 @@
     <ClCompile Include="src\gpu\platform\OpenGL\buf\VAO.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\buf\VBO.cpp" />
     <ClCompile Include="src\gpu\platform\OpenGL\Texture.cpp" />
+    <ClCompile Include="src\gpu\TextureFilteringAlgo.cpp" />
     <ClCompile Include="src\input\GLFWInput.cpp" />
     <ClCompile Include="src\input\Keys.cpp" />
     <ClCompile Include="src\pch\pch.cpp">
@@ -208,6 +209,7 @@
     <ClInclude Include="src\gpu\Overlay.h" />
     <ClInclude Include="src\gpu\platform\OpenGL\Shader.h" />
     <ClInclude Include="src\gpu\platform\OpenGL\Texture.h" />
+    <ClInclude Include="src\gpu\TextureFilteringAlgo.h" />
     <ClInclude Include="src\gpu\WindowMode.h" />
     <ClInclude Include="src\input\Input.h" />
     <ClInclude Include="src\input\Keys.h" />

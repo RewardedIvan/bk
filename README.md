@@ -28,4 +28,4 @@ todo
 - add vulkan
 - build system?
 - move libs to submodules
-- move examples to its own project
+- mip maps
