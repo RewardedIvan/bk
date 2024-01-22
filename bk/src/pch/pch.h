@@ -8,18 +8,6 @@
 #define BK_LOG_DEBUG
 #define BK_LOG_STDOUT
 
-// Decide GL+GLSL versions
-#if defined(IMGUI_IMPL_OPENGL_ES2)
-// GL ES 2.0 + GLSL 100
-#define IMGUI_GLSL_VERSION "#version 100"
-#elif defined(__APPLE__)
-// GL 3.2 + GLSL 150
-#define IMGUI_GLSL_VERSION "#version 150"
-#else
-// GL 3.0 + GLSL 130
-#define IMGUI_GLSL_VERSION "#version 130"
-#endif
-
 #include <glm/glm.hpp>
 #include <stb_image.h>
 
@@ -41,7 +29,9 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
+#ifdef BK_INCLUDE_IMGUI
 #include <imgui_impl_opengl3.h>
+#endif
 #endif
 
 // std

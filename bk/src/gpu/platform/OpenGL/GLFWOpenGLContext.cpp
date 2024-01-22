@@ -45,7 +45,7 @@ namespace bk::gpu::opengl {
 
 #ifdef BK_INCLUDE_IMGUI
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
-		ImGui_ImplOpenGL3_Init(IMGUI_GLSL_VERSION);
+		ImGui_ImplOpenGL3_Init("#version 130");
 #endif
 
 		// input event
@@ -78,9 +78,11 @@ namespace bk::gpu::opengl {
 
 	// rendering
 	void GLFWOpenGLContext::FrameStart() {
+#ifdef BK_INCLUDE_IMGUI
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
+#endif
 
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
@@ -88,9 +90,11 @@ namespace bk::gpu::opengl {
 	void GLFWOpenGLContext::FrameEnd() {
 		glm::ivec2 ws = getWindowSize();
 
-		ImGui::Render();
 		glViewport(0, 0, ws.x, ws.y);
+#ifdef BK_INCLUDE_IMGUI
+		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+#endif
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
