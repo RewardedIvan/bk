@@ -14,7 +14,7 @@ namespace bk::gpu {
 		// API initilization
 		// note: call these base functions after your initializing your api
 		virtual void InitializeAPI();
-		virtual void UninitializeAPI();
+		virtual void UninitializeAPI() = 0;
 
 		// window creation
 #undef CreateWindow // windows.h

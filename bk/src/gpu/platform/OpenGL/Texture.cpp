@@ -15,7 +15,7 @@ namespace bk::gpu::opengl {
 		GLCheckErr(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE));
 
 		PixelFormat_t pfd = queryPFData(pf);
-		GLCheckErr(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, size.x, size.y, 0, GL_RGBA, (pfd.bpp == 8) ? GL_UNSIGNED_BYTE : (pfd.bpp == 16) ? GL_UNSIGNED_SHORT : 0, buf));
+		GLCheckErr(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, size.x, size.y, 0, pfd.gl, (pfd.bpp == 8) ? GL_UNSIGNED_BYTE : (pfd.bpp == 16) ? GL_UNSIGNED_SHORT : 0, buf));
 		
 		this->unbind();
 	}
@@ -23,6 +23,7 @@ namespace bk::gpu::opengl {
 	Texture::Texture(fs::path path, PixelFormat pf, TextureFilteringAlgo af) : pf(pf), af(af) {
 		if (!fs::exists(path)) {
 			Log::error("Texture file doesn't exist!");
+			createErrorTexture(); return;
 		}
 
 		int w = 0, h = 0;
@@ -41,7 +42,7 @@ namespace bk::gpu::opengl {
 		archive::File* f = ar.findFile(path);
 		if (f == nullptr) {
 			Log::error("Couldn't find texture inside archive! '%s'", path);
-			return;
+			createErrorTexture(); return;
 		}
 
 		int w = 0, h = 0;
@@ -55,9 +56,27 @@ namespace bk::gpu::opengl {
 		Upload();
 	}
 
+	void Texture::createErrorTexture(glm::uvec2 size) {
+		this->size = size;
+		this->buf = malloc((size.y * size.x) * sizeof(uint32_t));
+		this->pf = PixelFormat::RGBA;
+		this->af = TextureFilteringAlgo::NEAREST;
+
+		for (uint32_t y = 0; y < size.y; y++) {
+			for (uint32_t x = 0; x < size.x; x++) {
+				if ((x+y) % 2 == 0)
+					((uint32_t*)buf)[(y * size.y) + x] = 0xFFFF00FF;
+				else
+					((uint32_t*)buf)[(y * size.y) + x] = 0xFF000000;
+			}
+		}
+
+		Upload();
+	}
+
 	Texture::~Texture() {
 		GLCheckErr(glDeleteTextures(1, &id));
-		stbi_image_free(buf);
+		free(buf);
 	}
 
 	void Texture::Activate(uint8_t slot) {

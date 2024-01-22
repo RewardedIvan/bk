@@ -8,11 +8,11 @@
 
 namespace bk::gpu::opengl {
 	struct Texture : bindable {
-		Texture();
 		// needs buf, size, pf & af initialized
 		void Upload();
-		Texture(fs::path path, PixelFormat pf = PixelFormat::RGBA8, TextureFilteringAlgo af = TextureFilteringAlgo::LINEAR);
-		Texture(archive::Archive ar, const char* path, PixelFormat pf = PixelFormat::RGBA8, TextureFilteringAlgo af = TextureFilteringAlgo::LINEAR);
+		Texture(fs::path path, PixelFormat pf = PixelFormat::RGBA, TextureFilteringAlgo af = TextureFilteringAlgo::LINEAR);
+		Texture(archive::Archive ar, const char* path, PixelFormat pf = PixelFormat::RGBA, TextureFilteringAlgo af = TextureFilteringAlgo::LINEAR);
+		void createErrorTexture(glm::uvec2 size = glm::uvec2(32, 32));
 		~Texture();
 
 		void Activate(uint8_t slot);

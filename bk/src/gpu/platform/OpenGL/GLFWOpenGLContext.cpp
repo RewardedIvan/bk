@@ -22,8 +22,6 @@ namespace bk::gpu::opengl {
 
 	void GLFWOpenGLContext::UninitializeAPI() {
 		glfwTerminate();
-
-		gpu::Context::UninitializeAPI();
 	}
 
 	// window creation

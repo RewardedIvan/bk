@@ -12,7 +12,6 @@ namespace bk::gpu {
 			return GL_NEAREST;
 		default:
 			return 0;
-			break;
 		}
 	}
 #endif

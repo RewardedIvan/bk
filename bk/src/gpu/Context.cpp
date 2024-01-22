@@ -19,12 +19,6 @@ namespace bk::gpu {
 #endif
 	}
 
-	void Context::UninitializeAPI() {
-#ifdef BK_INCLUDE_IMGUI
-		ImGui::DestroyContext();
-#endif
-	}
-
 	Context::Context(API api) : api(api) {
 	}
 
