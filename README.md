@@ -4,7 +4,7 @@ bk is a low level game engine/framework written in c++
 
 ## dependencies
 
-- imgui
+- imgui (optional)
 - glfw & glew (optional)
 - glm
 - stb
